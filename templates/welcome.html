@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+<div>
+    <h1 class = title>SpaceX stats</h1>
+    <p class = fronttext>Click below to display the latest SpaceX launch and other stats.</p>
+    <form action="/index" method="get">
+        <button class="btn btn-primary" type="submit">Launch!</button>
+    </form>
+</div>
+{% endblock %}

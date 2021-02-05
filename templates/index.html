@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Latest Launch Details
+{% endblock %}
+
+{% block main %}
+<div class="">
+ 
+        <div class="">
+            <h1>SpaceX: Latest Launch Details</h1>
+        </div>
+        
+        <table class="table table-striped" style='width: 100%'>
+            <colgroup>
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 70%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mission Name</td>
+                    <td>{{ latest_launch['name'] }}</td>
+                </tr>
+                <tr>
+                    <td>Flight Number</td>
+                    <td>{{ latest_launch['flight_number'] }}</td>
+                </tr>
+                <tr>
+                    <td>Launch Date and Local Time</td>
+                    <td>{{ latest_launch['date_local'] }}</td>
+                </tr>
+                <tr>
+                    <td>Mission Details</td>
+                    <td>{{ latest_launch['details'] }}</td>
+                </tr>
+                <tr>
+                    <td>Youtube Link</td>
+                    <td><a href={{ latest_launch['links']['webcast'] }} target="_blank">{{ latest_launch['links']['webcast'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+         <div class="">
+            <h2>SpaceX: Ship Information for Mission {{ latest_launch['name'] }}</h2>
+        </div>
+
+        {% for i in all_ships %}
+        <table class="table table-striped" style='width: 100%'>
+            <colgroup>
+                <col span="1" style="width: 40%;">
+                <col span="1" style="width: 60%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Parameter       </th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ship Name       </td>
+                    <td>{{ i['name'] }}</td>
+                </tr>
+                <tr>
+                    <td>Ship Type       </td>
+                    <td>{{ i['type'] }}</td>
+                </tr>
+                <tr>
+                    <td>Home Port       </td>
+                    <td>{{ i['home_port'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        {% endfor %}
+</div>
+{% endblock %}
